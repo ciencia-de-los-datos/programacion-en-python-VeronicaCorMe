@@ -13,6 +13,11 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 """
 
 
+from pickle import TRUE
+from pstats import SortKey
+from typing import Collection
+
+
 def pregunta_01():
     """
     Retorne la suma de la segunda columna.
@@ -21,7 +26,25 @@ def pregunta_01():
     214
 
     """
-    return
+    
+    datos= open("data.csv", "r").readlines()
+    datos= [f.replace("\t", ",") for f in datos]
+    datos= [f.replace("\n", "") for f in datos]
+    datos= [f.split(",") for f in datos]
+    Datosfilas=list(datos)
+    Filas=len(Datosfilas)
+
+  
+
+    Suma = 0
+    x=0
+    while x < Filas:
+            Suma= Suma + int(Datosfilas[x][1])
+            x += 1
+    
+    return Suma
+
+print(pregunta_01())
 
 
 def pregunta_02():
@@ -37,9 +60,40 @@ def pregunta_02():
         ("D", 6),
         ("E", 14),
     ]
+    
 
     """
-    return
+    datos= open("data.csv", "r", encoding='utf8').readlines()
+    datos= [f.replace("\t", ",") for f in datos]
+    datos= [f.replace("\n", "") for f in datos]
+    datos= [f.split(",") for f in datos]
+    Datosfilas=list(datos)
+
+    Filas=len(Datosfilas)
+
+    #En adelante creo una lista que contenga todos los elementos en la fila 
+    Datos2 = []
+    x = 0
+    while x < Filas:
+      Datos2.append(str(Datosfilas[x][0]))
+      x += 1
+
+    Id= sorted(set(Datos2))
+  
+    valores= []
+    
+    Contador =0
+    for x in Id:
+      Contador= Datos2.count(x)
+      valores.append(Contador)
+    Tupla = list((zip(Id,valores)))
+
+    return Tupla
+    
+    
+
+print(pregunta_02())
+
 
 
 def pregunta_03():
