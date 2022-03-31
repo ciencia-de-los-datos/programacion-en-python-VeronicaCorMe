@@ -13,11 +13,6 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 """
 
 
-from pickle import TRUE
-from pstats import SortKey
-from typing import Collection
-
-
 def pregunta_01():
     """
     Retorne la suma de la segunda columna.
@@ -44,7 +39,6 @@ def pregunta_01():
     
     return Suma
 
-print(pregunta_01())
 
 
 def pregunta_02():
