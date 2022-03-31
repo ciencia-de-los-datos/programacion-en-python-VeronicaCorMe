@@ -71,24 +71,22 @@ def pregunta_02():
     while x < Filas:
       Datos2.append(str(Datosfilas[x][0]))
       x += 1
-
+    #ordeno mi lista convirtiendola en un conjunto set
     Id= sorted(set(Datos2))
   
+    #creo mi lista de valores
     valores= []
     
     Contador =0
     for x in Id:
       Contador= Datos2.count(x)
       valores.append(Contador)
+    #Creo la lista de tuplas uniendo ID con Contadores
+    
     Tupla = list((zip(Id,valores)))
 
     return Tupla
     
-    
-
-print(pregunta_02())
-
-
 
 def pregunta_03():
     """
@@ -105,7 +103,43 @@ def pregunta_03():
     ]
 
     """
-    return
+    datos= open("data.csv", "r", encoding='utf8').readlines()
+    datos= [f.replace("\t", ",") for f in datos]
+    datos= [f.replace("\n", "") for f in datos]
+    datos= [f.split(",") for f in datos]
+    Datosfilas=list(datos)
+    Filas=len(Datosfilas)
+
+    Datos3 = []
+    Datos4 = []
+    x = 0
+    while x < Filas:
+        Datos3.append(str(Datosfilas[x][0]))
+        Datos4.append(int(Datosfilas[x][1]))
+        x += 1
+
+    Lista_datos=list(zip(Datos3,Datos4))
+    Letras=sorted(set(Datos3))
+    Lista_datos.sort()
+    x=0
+    suma_temp=0
+    valores=[]
+
+    for i in Letras:
+        while x<40 :
+            if i == Lista_datos[x][0]:
+                suma_temp += Lista_datos[x][1]
+                x += 1
+            else:
+                x +=1
+
+        valores.append(suma_temp) 
+        x=0
+        suma_temp=0
+
+    Resultado=list(zip(Letras,valores))
+    
+    return Resultado
 
 
 def pregunta_04():
